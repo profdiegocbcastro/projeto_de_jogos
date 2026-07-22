@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dhqcp0ybnl8rt"]
+
+[ext_resource type="Texture2D" uid="uid://5witjy7hnh8t" path="res://sprites/laser-bolts.png" id="1_7m4qf"]
+[ext_resource type="Script" uid="uid://dw0yxumtkod2i" path="res://scripts/tiro.gd" id="1_r2yu0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2yu0"]
+atlas = ExtResource("1_7m4qf")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q7r2"]
+atlas = ExtResource("1_7m4qf")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ubys2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2yu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q7r2")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk1fx"]
+size = Vector2(5, 9)
+
+[node name="Tiro" type="Area2D" unique_id=807391651]
+script = ExtResource("1_r2yu0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1076867098]
+sprite_frames = SubResource("SpriteFrames_ubys2")
+autoplay = "default"
+frame = 1
+frame_progress = 0.17210855
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=186801913]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_xk1fx")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=713824775]
+rect = Rect2(-2, -6, 5, 12)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_screen_exit"]

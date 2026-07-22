@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://borajq4oshs2i"]
+
+[ext_resource type="PackedScene" uid="uid://dcd11egb8vj4n" path="res://cenas/character_body_2d.tscn" id="1_8ee1x"]
+[ext_resource type="PackedScene" uid="uid://or1gelkx6q3" path="res://cenas/inimigo.tscn" id="2_ggxsj"]
+[ext_resource type="PackedScene" uid="uid://b4thduygawm3e" path="res://cenas/inimigo2.tscn" id="3_5uqjh"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="4_level"]
+[ext_resource type="Script" path="res://scripts/spawner.gd" id="5_spawner"]
+
+[node name="Node2D" type="Node2D" unique_id=2100376494]
+script = ExtResource("4_level")
+
+[node name="Player" parent="." unique_id=660311844 instance=ExtResource("1_8ee1x")]
+position = Vector2(120, 160)
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("5_spawner")
+inimigos = Array[PackedScene]([ExtResource("2_ggxsj"), ExtResource("3_5uqjh")])
+
+[node name="Timer" type="Timer" parent="Spawner"]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LabelPontos" type="Label" parent="CanvasLayer"]
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 120.0
+offset_bottom = 18.0
+theme_override_font_sizes/font_size = 10
+text = "Pontos: 0"
+
+[node name="GameOver" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 70.0
+offset_right = 220.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+text = "GAME OVER
+Aperte espaço para reiniciar"
+visible = false

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dcd11egb8vj4n"]
+
+[ext_resource type="Script" uid="uid://d00lvue82f57u" path="res://scripts/player.gd" id="1_xk1fx"]
+[ext_resource type="Texture2D" uid="uid://5witjy7hnh8t" path="res://sprites/laser-bolts.png" id="2_xk1fx"]
+[ext_resource type="AudioStream" uid="uid://c8w2wqt1bhn3v" path="res://sons/Sound_of_a_UMP_firearm_being_discharged..wav" id="3_8d02v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ij6vw"]
+radius = 7.0
+height = 22.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qfbxl"]
+load_path = "res://.godot/imported/ship.png-4d5e64b785005468aa74f7ca14df1341.ctex"
+
+[node name="Player" type="CharacterBody2D" unique_id=660311844]
+script = ExtResource("1_xk1fx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1063164087]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_ij6vw")
+
+[node name="Nave" type="Sprite2D" parent="." unique_id=637784059]
+position = Vector2(0, 1)
+texture = SubResource("CompressedTexture2D_qfbxl")
+hframes = 5
+vframes = 2
+frame = 2
+
+[node name="Flash" type="Sprite2D" parent="." unique_id=2110643653]
+visible = false
+position = Vector2(0, -16)
+texture = ExtResource("2_xk1fx")
+hframes = 2
+vframes = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=783411842]
+wait_time = 0.1
+
+[node name="son_tiro" type="AudioStreamPlayer2D" parent="." unique_id=446243299]
+stream = ExtResource("3_8d02v")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

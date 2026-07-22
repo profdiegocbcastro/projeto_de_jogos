@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b4thduygawm3e"]
+
+[ext_resource type="PackedScene" uid="uid://or1gelkx6q3" path="res://cenas/inimigo.tscn" id="1_4uocv"]
+[ext_resource type="Texture2D" uid="uid://bldyjcc0oxvku" path="res://sprites/enemy-medium.png" id="2_7pomm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_budiq"]
+atlas = ExtResource("2_7pomm")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr7fh"]
+atlas = ExtResource("2_7pomm")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pomm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_budiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr7fh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Inimigo2" unique_id=2134607166 instance=ExtResource("1_4uocv")]
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=2047752749]
+sprite_frames = SubResource("SpriteFrames_7pomm")
+frame = 0
+frame_progress = 0.3849959
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1999557619]
+position = Vector2(0, -6)
+scale = Vector2(1, 1.0505245)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=1162831997]
+rect = Rect2(-13, -8, 26, 17)
