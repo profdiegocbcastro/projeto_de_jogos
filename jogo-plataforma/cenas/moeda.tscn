@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bihr38a1ptcok"]
+
+[ext_resource type="Texture2D" uid="uid://cxwwgmtblxdpe" path="res://sprites/tilemap/monochrome_tilemap_transparent.png" id="1_5k251"]
+[ext_resource type="Script" uid="uid://3gumlf88pfuf" path="res://scripts/moeda.gd" id="1_ld1q8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iefgs"]
+size = Vector2(10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ld1q8"]
+atlas = ExtResource("1_5k251")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3d6r"]
+atlas = ExtResource("1_5k251")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fujyg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ld1q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3d6r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D" unique_id=1489782236]
+scale = Vector2(2, 2)
+script = ExtResource("1_ld1q8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1924237779]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_iefgs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1411924231]
+sprite_frames = SubResource("SpriteFrames_fujyg")
+frame = 1
+frame_progress = 0.052827775
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

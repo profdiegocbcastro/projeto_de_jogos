@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://wb8tpbjvk3gc"]
+
+[ext_resource type="Script" uid="uid://c4qsen21bk08m" path="res://scripts/main.gd" id="1_t4ukd"]
+[ext_resource type="PackedScene" uid="uid://0jxmao3vih28" path="res://cenas/level_root.tscn" id="2_4fhxt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iefgs"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D" unique_id=1276453637]
+position = Vector2(-8, -3)
+script = ExtResource("1_t4ukd")
+metadata/_edit_lock_ = true
+
+[node name="levelRoot" parent="." unique_id=291038569 instance=ExtResource("2_4fhxt")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=579304467]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1495655395]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -570.0
+offset_top = 50.0
+offset_right = -372.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iefgs")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=2016658429]
+layout_mode = 0
+offset_right = 196.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.02, 0.02, 0.02, 1)
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
